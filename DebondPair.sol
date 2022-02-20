@@ -42,7 +42,7 @@ contract DebondPair {
     //mapping(address => mapping(address => address)) private pools;
 
 
-	function ratioFactorUpdate(uint128 amount0, uint128 amount1) internal returns(uint128, uint128) {
+	function updateratioFactor(uint128 amount0, uint128 amount1) internal returns(uint128, uint128) {
         ratioFactor01 = (reserve0.add(amount0).mul(1 ether)).div(totalReserve0.add(amount0));
         ratioFactor10 = (reserve1.add(amount1).mul(1 ether)).div(totalReserve1.add(amount1));
 
@@ -70,7 +70,7 @@ contract DebondPair {
         totalReserve0 = 500;
         totalReserve1 = 800;
 
-        ratioFactorUpdate(_amount0, _amount1);
+        updateratioFactor(_amount0, _amount1);
         updatePrice();
     }
 }
