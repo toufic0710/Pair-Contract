@@ -56,13 +56,13 @@ contract DebondPair {
     }
 
     function updatePrice() internal returns(uint128, uint128) {
-        price0 = (ratioFactor10 * totalReserve1) / reserve0;
-        price1 = (ratioFactor01 * totalReserve0) / reserve1;
+        price0 = (ratioFactor10.mul(totalReserve1)).div(reserve0);
+        price1 = (ratioFactor01.mul(totalReserve0)).div(reserve1);
 
         return (price0, price1);
     } 
 
-    
+
 
     function test(uint128 _amount0, uint128 _amount1) external {
         reserve0 = 100;
