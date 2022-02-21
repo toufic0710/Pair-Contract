@@ -10,7 +10,8 @@ contract("Debond Pair Contract", async (accounts) => {
 	});
 
 	it("should deploy the contract", async () => {
-		expect(contract.address).not.to.equal(undefined);
+		expect(contract).not.to.equal(undefined);
+		expect(contract.address).not.to.equal('');
 	});
 
 	it("Should update the ratio factor and price", async () => {
