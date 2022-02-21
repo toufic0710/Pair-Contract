@@ -60,6 +60,11 @@ contract DebondPair {
         price1 = (ratioFactor01.mul(totalReserve0)).div(reserve1);
 
         return (price0, price1);
+    }
+
+    function getReserves() public view returns(uint128 _reserve0, uint128 _reserve1) {
+        _reserve0 = reserve0;
+        _reserve1 = reserve1;
     } 
 
 
