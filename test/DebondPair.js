@@ -4,6 +4,7 @@ contract("Debond Pair Contract", async (accounts) => {
 	let contract;
 	let account0 = accounts[0];
 	let account1 = accounts[1];
+	
 	beforeEach(async () => {
 		contract = await DebondPair.deployed();
 	});
