@@ -65,7 +65,7 @@ contract PairContract is IPairContract {
 		price[token0][token1] = _ratio10[1].mul(_reserve0).div(denominator0);
 		price[token1][token0] = _ratio01[1].mul(_reserve1).div(denominator1);
 
-		return (price[token0][token1], price[token1][token0]);
+		return (price[token0][token1], price[token1][token0])
 	}
 
 	function getReserves(address token) external view returns(uint128 previousReserve, uint128 currentReserve) {
