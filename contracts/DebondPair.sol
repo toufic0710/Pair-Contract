@@ -39,8 +39,9 @@ contract DebondPair {
     uint128 public ratioFactor10;
 
     // mapping of pairs tokens in a pool
-    //mapping(address => mapping(address => address)) private pools;
-
+    // tokenA => tokenB => r_{tA (tB)}
+    //mapping(tokenA => mapping(tokenB => r_{A (B)})) private pools;
+    //mapping(tokenB => mapping(tokenA => r_{B (A)})) private pools;
 
 	function updateRatioFactor(uint128 amount0, uint128 amount1) internal returns(uint128, uint128) {
         ratioFactor01 = (reserve0.add(amount0).mul(1 ether)).div(totalReserve0.add(amount0));
