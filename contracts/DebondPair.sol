@@ -35,6 +35,7 @@ contract DebondPair {
     uint128 public k; // reserv0 * reserv1
 
     // ratio factors r_{t1 (t2)} and r_{t2 (t1)}
+    mapping(address => mapping(address => uint128[2])) ratio;
     uint128 public ratioFactor01;
     uint128 public ratioFactor10;
 
@@ -42,6 +43,38 @@ contract DebondPair {
     // tokenA => tokenB => r_{tA (tB)}
     //mapping(tokenA => mapping(tokenB => r_{A (B)})) private pools;
     //mapping(tokenB => mapping(tokenA => r_{B (A)})) private pools;
+
+    // THIS MAPPING MUST BE REMOVED, IT SHOULD COME FROM THE GOUVERNANCE CONTRACT
+    mapping(address => bool) tokenList;
+
+
+    /**
+    * @dev add liquidity of one token to the pool, the amount of the second token (DBIT or DBGT) is minted
+    * @dev The _tokenList input must be retrieved from the Gouvernance contract
+    */
+    function _addLiquidityForOneToken(
+        address _token,
+        uint128 _amountToken,
+        uint128 _amountDBIT
+    ) internal view returns(uint128 amountToken, uint128 amountDBIT) {
+        // ToDo: the _tokenList mapping must be retrieved from the Gouvernance contract
+        bool _tokenList = tokenList[_token];
+        require(_tokenList, "Token not listed");
+
+        // ToDo: Toufic must PROVIDE the DBIT mint function
+        // CALL function mintDBIT() function and store the result to dbitAmount;
+        uint128 dbitAmount = _amountDBIT * 1000;  // MUST BE _amountDebond * mint(debond)
+
+        (amountToken, amountDBIT) = (_amountToken, dbitAmount);
+    }
+
+    function addLiquidityForOneToken(
+        address _token,
+        uint128 _amountToken,
+        uint128 _amountDebond
+    ) {
+
+    }
 
 	function updateRatioFactor(uint128 amount0, uint128 amount1) internal returns(uint128, uint128) {
         ratioFactor01 = (reserve0.add(amount0).mul(1 ether)).div(totalReserve0.add(amount0));

@@ -20,15 +20,69 @@ import "./libraries/SafeMath.sol";
 contract PairContract is IPairContract {
 	using SafeMath for uint128;
 
+	uint128 public k;  // reserv0 * reserv1
+
 	// ratio factors r_{tA (tB)} of a pair
 	mapping(address => mapping(address => uint128[2])) internal ratio;
-
 	// price P(tA, tB) in a pair
 	mapping(address => mapping(address => uint128)) internal price;
-
 	// token reserve L(tA) for the Pool
 	mapping(address => uint128[2]) internal reserve;
 
+
+	//====== TO BE REMOVED
+    mapping(address => bool) tokenList;  // THIS MAPPING MUST BE REMOVED, IT SHOULD COME FROM THE GOUVERNANCE CONTRACT
+	
+	// This must be Bonds from EIP-3475
+	struct Bond {
+		uint128 tokenBond;
+		uint128 dbitBond;
+	}
+
+	mapping(address => mapping(address => Bond)) public bonds;
+
+	address tokenBondAddress = "0x62C549A323e1864f49ac3A5Bb1448De20b0f5538";
+	address DBITBondAddress = "0xC0D335A6296310895E87fcAa31466283f65f43Eb";
+	//====================
+
+	modifier inTime(uint deadline) {
+        require(deadline >= block.timestamp, 'UniswapV2Router: EXPIRED');
+        _;
+    }
+
+
+	/**
+    * @dev add liquidity of one token to the pool, the amount of the second token (DBIT or DBGT) is minted
+    * @dev The _tokenList input must be retrieved from the Gouvernance contract
+    */
+    function _addLiquidityForOneToken(
+        address _token,
+        uint128 _amountToken,
+        uint128 _amountDBIT
+    ) internal view returns(uint128 amountToken, uint128 amountDBIT) {
+        // ToDo: the _tokenList mapping must be retrieved from the Gouvernance contract
+        bool _tokenList = tokenList[_token];
+        require(_tokenList, "Token not listed");
+
+        // ToDo: Toufic must PROVIDE the DBIT mint function
+        // CALL function mintDBIT() function and store the result to dbitAmount;
+        uint128 dbitAmount = _amountDBIT * 1000;  // MUST BE _amountDebond * mint(debond)
+
+        (amountToken, amountDBIT) = (_amountToken, dbitAmount);
+    }
+
+	function addLiquidity(
+		address _token,
+		uint128 _amountToken,
+		uint128 _amountDBIT,
+		address _to,
+		uint deadline
+	) external virtual inTime(deadline) returns(uint128 amountToken, uint128 amountDBIT, uint128 tokenBond, uint128 dbitBond) {
+		(amountToken, amountDBIT) = _addLiquidityForOneToken(_token, _amountToken, _amountDBIT);
+
+		// get the _token Bond address from Bank Contract
+		// get the DBIT Bond address from Bank Contrat
+	}
 	
 	function updateRatioFactor(address token0, address token1, uint128 amount0, uint128 amount1) external returns(uint128 ratio01, uint128 ratio10) {
 		uint128[2] memory _ratio01 = ratio[token0][token1];  // gas savings
