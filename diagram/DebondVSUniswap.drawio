@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-02-26T18:12:12.128Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.87 Safari/537.36" etag="Oz6dkR9VQjQc_jIx7oMy" version="16.6.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-02-26T18:15:25.243Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.87 Safari/537.36" etag="Lt5WjI0Y2QoUoC_U6nrV" version="16.6.4" type="github">
   <diagram id="2oeUySleaV4vJK9pJLwO" name="Page-1">
     <mxGraphModel dx="1420" dy="805" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -19,7 +19,7 @@
         <mxCell id="KYhHVB4WSsh-iQpejZ-_-4" value="&lt;font style=&quot;font-size: 18px&quot;&gt;(Token1, Token2)&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=#a0522d;strokeColor=#6D1F00;rounded=0;fontSize=28;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="39" y="387" width="148" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="KYhHVB4WSsh-iQpejZ-_-5" value="[ (token1, token2), (token1, token3), (token2, token4), ...]" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=0;fontSize=18;gradientColor=#7ea6e0;" vertex="1" parent="1">
+        <mxCell id="KYhHVB4WSsh-iQpejZ-_-5" value="[ (token1, token2), (token1, token3), (token2, token4), ...]" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=#d5e8d4;rounded=0;fontSize=18;gradientColor=#97d077;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="65" y="516" width="460" height="26" as="geometry" />
         </mxCell>
         <mxCell id="KYhHVB4WSsh-iQpejZ-_-7" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;endArrow=classic;html=1;rounded=0;fontSize=18;" edge="1" parent="1" source="KYhHVB4WSsh-iQpejZ-_-1" target="KYhHVB4WSsh-iQpejZ-_-3">
@@ -59,8 +59,8 @@
         <mxCell id="KYhHVB4WSsh-iQpejZ-_-19" value="Add tokens to the Pair" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontSize=15;" vertex="1" parent="1">
           <mxGeometry x="295" y="453" width="158" height="22" as="geometry" />
         </mxCell>
-        <mxCell id="KYhHVB4WSsh-iQpejZ-_-20" value="Add Pair" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontSize=15;" vertex="1" parent="1">
-          <mxGeometry x="39" y="325" width="68" height="22" as="geometry" />
+        <mxCell id="KYhHVB4WSsh-iQpejZ-_-20" value="Create Pair" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="22" y="325" width="86" height="22" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
