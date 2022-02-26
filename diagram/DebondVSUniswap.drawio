@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-02-26T17:55:37.338Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.87 Safari/537.36" etag="qcXaXrR9zU86g9WXBY-i" version="16.6.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-02-26T18:07:48.288Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.87 Safari/537.36" etag="JUsk0TtVsh3_rbq7wtPw" version="16.6.4" type="github">
   <diagram id="2oeUySleaV4vJK9pJLwO" name="Page-1">
     <mxGraphModel dx="1420" dy="805" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -12,6 +12,37 @@
         </mxCell>
         <mxCell id="KYhHVB4WSsh-iQpejZ-_-2" value="DeBond" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=#ffe6cc;strokeColor=#d79b00;rounded=0;fontSize=25;" vertex="1" parent="1">
           <mxGeometry x="804" y="142" width="100" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="KYhHVB4WSsh-iQpejZ-_-3" value="&lt;font style=&quot;font-size: 18px&quot;&gt;(Token1, Token2)&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=0;fontSize=28;" vertex="1" parent="1">
+          <mxGeometry x="219" y="260" width="148" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="KYhHVB4WSsh-iQpejZ-_-4" value="&lt;font style=&quot;font-size: 18px&quot;&gt;(Token1, Token2)&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=#a0522d;strokeColor=#6D1F00;rounded=0;fontSize=28;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="39" y="387" width="148" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="KYhHVB4WSsh-iQpejZ-_-5" value="[ (token1, token2), (token1, token3), (token2, token4), ...]" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=0;fontSize=18;gradientColor=#7ea6e0;" vertex="1" parent="1">
+          <mxGeometry x="65" y="516" width="460" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="KYhHVB4WSsh-iQpejZ-_-7" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;endArrow=classic;html=1;rounded=0;fontSize=18;" edge="1" parent="1" source="KYhHVB4WSsh-iQpejZ-_-1" target="KYhHVB4WSsh-iQpejZ-_-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="211.5" y="185" as="sourcePoint" />
+            <mxPoint x="14.5" y="199" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="295" y="255" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KYhHVB4WSsh-iQpejZ-_-8" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;rounded=0;fontSize=18;exitX=-0.027;exitY=0.595;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.48;entryY=-0.048;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="KYhHVB4WSsh-iQpejZ-_-3" target="KYhHVB4WSsh-iQpejZ-_-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="79" y="288" as="sourcePoint" />
+            <mxPoint x="111" y="372" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KYhHVB4WSsh-iQpejZ-_-9" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;rounded=0;fontSize=18;exitX=0.493;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="KYhHVB4WSsh-iQpejZ-_-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="556" y="425" as="sourcePoint" />
+            <mxPoint x="292" y="513" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
