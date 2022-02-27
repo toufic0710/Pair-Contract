@@ -57,4 +57,15 @@ contract SigmoidBank {
     function fetchAllTokenListed(uint256 _coinIndex) public view returns(address[] memory) {
         return list[_coinIndex].tokenAddress;
     }
+
+    function ListToken(address _token, uint256 _coinIndex) public returns(bool) {
+        // ToDo: Check that token with index _coinIndex (such as DBIT) is allowed by Gouvernance contract
+        bool listed = tokenListed(_token, _coinIndex);
+        require(listed == false, "Debond: Token already listed");
+
+        list[_coinIndex].tokenAddress.push(_token);
+        list[_coinIndex].numberOfTokens += 1;
+
+        return true;
+    }
 }
