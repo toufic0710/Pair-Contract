@@ -65,7 +65,7 @@ contract DebondPair {
         // CALL function mintDBIT() function and store the result to dbitAmount;
         uint128 dbitAmount = _amountDBIT * 1000;  // MUST BE _amountDebond * mint(debond)
 
-        (amountToken, amountDBIT) = (_amountToken, dbitAmount);
+        (amountToken, amountDBIT) = (_amountToken, dbitAmount)
     }
 
     function addLiquidityForOneToken(
