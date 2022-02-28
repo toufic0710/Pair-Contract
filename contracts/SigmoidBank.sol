@@ -15,9 +15,16 @@ pragma solidity 0.8.12;
 */
 
 contract SigmoidBank {
-	    struct List {
+	struct List {
         address[] tokenAddress;
         uint256 numberOfTokens;
+    }
+
+    struct Pair {
+        address token0;
+        address token1;
+        uint256 reserveToken0;
+        uint256 reserveToken1;
     }
 
     address public DBITContract;
@@ -26,7 +33,7 @@ contract SigmoidBank {
     address public bankContract;
     address public bondContract;
 
-    mapping(uint256 => List) private list;
+    mapping(uint256 => List) internal list;
     mapping(address => bool) public whitelist;
 
     bool public contractIsActive;
@@ -37,7 +44,9 @@ contract SigmoidBank {
         address BUSD = 0x128172788D386E44e37eFF38454Ba54cf350206F;
         address DAI  = 0x9a25f122Fb39B6cB17fcCd63584f8473C09A683C;
 
-        // index 0 for USD
+        /**
+        * @dev list index: 0 - DBIT, 1 - DBGT
+        */
         list[0].tokenAddress.push(USDT);
         list[0].tokenAddress.push(USDC);
         list[0].tokenAddress.push(BUSD);
@@ -58,7 +67,7 @@ contract SigmoidBank {
         return list[_coinIndex].tokenAddress;
     }
 
-    function ListToken(address _token, uint256 _coinIndex) public returns(bool) {
+    function listToken(address _token, uint256 _coinIndex) public returns(bool) {
         // ToDo: Check that token with index _coinIndex (such as DBIT) is allowed by Gouvernance contract
         bool listed = tokenListed(_token, _coinIndex);
         require(listed == false, "Debond: Token already listed");
