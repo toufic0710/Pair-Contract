@@ -1,15 +1,6 @@
 ---
 name: Task
 about: Template for Debond's Core Team
-title: ''
-labels: ''
-assignees: ''
-
----
-
----
-name: Task
-about: Template for Debond's Core Team
 title: 'Task: '
 labels: ''
 assignees: ''
