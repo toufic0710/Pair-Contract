@@ -21,7 +21,7 @@ import "./libraries//PRBMathUD60x18.sol";
 
 contract PairContract is IPairContract {
 	using SafeMath for uint256;
-	SigmoidBank bank
+	SigmoidBank bank;
 
 	mapping(address => mapping(address => uint256)) public k; // reserv0 * reserve1
 	// ratio factors r_{tA (tB)} of a pair
