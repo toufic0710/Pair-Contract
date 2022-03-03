@@ -15,6 +15,8 @@ pragma solidity 0.8.12;
 */
 
 interface IPairContract {
-	function updateRatioFactor(address token0, address token1, uint128 amount0, uint128 amount1) external returns(uint128 ratio01, uint128 ratio10);
-	function updatePrice(address token0, address token1) external returns(uint128 price0, uint128 price1);
+	function updateRatioFactor(address token0, address token1, uint256 amount0, uint256 amount1) external returns(uint256 ratio01, uint256 ratio10);
+	function updatePrice(address token0, address token1) external returns(uint256 price0, uint256 price1);
+    function mint(address to) external returns(uint256 boundToken1, uint256 boundToken2);
+    function amountOfDebondToMint(uint256 _dbitIn) external returns(uint256 amountDBIT);
 }

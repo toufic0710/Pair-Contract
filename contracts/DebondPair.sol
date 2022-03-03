@@ -17,27 +17,27 @@ pragma solidity 0.8.12;
 import "./libraries/SafeMath.sol";
 
 contract DebondPair {
-    using SafeMath for uint128;
+    using SafeMath for uint256;
 
     address public factory;
     address public token0;
     address public token1;
 
-    uint128 private reserve0; 
-    uint128 private reserve1;
+    uint256 private reserve0; 
+    uint256 private reserve1;
 
     // to be checked
-    uint128 private totalReserve0;
-    uint128 private totalReserve1;
+    uint256 private totalReserve0;
+    uint256 private totalReserve1;
 
-    uint128 public price0;
-    uint128 public price1;
-    uint128 public k; // reserv0 * reserv1
+    uint256 public price0;
+    uint256 public price1;
+    uint256 public k; // reserv0 * reserv1
 
     // ratio factors r_{t1 (t2)} and r_{t2 (t1)}
-    mapping(address => mapping(address => uint128[2])) ratio;
-    uint128 public ratioFactor01;
-    uint128 public ratioFactor10;
+    mapping(address => mapping(address => uint256[2])) ratio;
+    uint256 public ratioFactor01;
+    uint256 public ratioFactor10;
 
     // mapping of pairs tokens in a pool
     // tokenA => tokenB => r_{tA (tB)}
@@ -54,29 +54,29 @@ contract DebondPair {
     */
     function _addLiquidityForOneToken(
         address _token,
-        uint128 _amountToken,
-        uint128 _amountDBIT
-    ) internal view returns(uint128 amountToken, uint128 amountDBIT) {
+        uint256 _amountToken,
+        uint256 _amountDBIT
+    ) internal view returns(uint256 amountToken, uint256 amountDBIT) {
         // ToDo: the _tokenList mapping must be retrieved from the Gouvernance contract
         bool _tokenList = tokenList[_token];
         require(_tokenList, "Token not listed");
 
         // ToDo: Toufic must PROVIDE the DBIT mint function
         // CALL function mintDBIT() function and store the result to dbitAmount;
-        uint128 dbitAmount = _amountDBIT * 1000;  // MUST BE _amountDebond * mint(debond)
+        uint256 dbitAmount = _amountDBIT * 1000;  // MUST BE _amountDebond * mint(debond)
 
         (amountToken, amountDBIT) = (_amountToken, dbitAmount);
     }
 
     function addLiquidityForOneToken(
         address _token,
-        uint128 _amountToken,
-        uint128 _amountDebond
-    ) {
+        uint256 _amountToken,
+        uint256 _amountDebond
+    ) public {
 
     }
 
-	function updateRatioFactor(uint128 amount0, uint128 amount1) internal returns(uint128, uint128) {
+	function updateRatioFactor(uint256 amount0, uint256 amount1) internal returns(uint256, uint256) {
         ratioFactor01 = (reserve0.add(amount0).mul(1 ether)).div(totalReserve0.add(amount0));
         ratioFactor10 = (reserve1.add(amount1).mul(1 ether)).div(totalReserve1.add(amount1));
 
@@ -89,20 +89,20 @@ contract DebondPair {
         return (ratioFactor01, ratioFactor10);
     }
 
-    function updatePrice() internal returns(uint128, uint128) {
+    function updatePrice() internal returns(uint256, uint256) {
         price0 = (ratioFactor10.mul(totalReserve1)).div(reserve0);
         price1 = (ratioFactor01.mul(totalReserve0)).div(reserve1);
 
         return (price0, price1);
     }
 
-    function getReserves() public view returns(uint128 _reserve0, uint128 _reserve1) {
+    function getReserves() public view returns(uint256 _reserve0, uint256 _reserve1) {
         _reserve0 = reserve0;
         _reserve1 = reserve1;
     } 
 
 
-    function test(uint128 _amount0, uint128 _amount1) external {
+    function test(uint256 _amount0, uint256 _amount1) external {
         reserve0 = 100;
         reserve1 = 200;
         totalReserve0 = 500;

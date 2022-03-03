@@ -34,9 +34,15 @@ contract SigmoidBank {
     address public bondContract;
 
     mapping(uint256 => List) internal list;
+    mapping(address => mapping(address => uint256[2])) internal pairs;
     mapping(address => bool) public whitelist;
 
     bool public contractIsActive;
+
+    constructor() {
+        DBITContract = 0x583031D1113aD414F02576BD6afaBfb302140225;
+        DBGTContract = 0xdD870fA1b7C4700F2BD7f44238821C26f7392148;
+    }
 
     function setList() public {
         address USDT = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
