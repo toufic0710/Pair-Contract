@@ -16,65 +16,34 @@ pragma solidity 0.8.12;
 
 // DappHub (https://github.com/dapphub/ds-math)
 library SafeMath {
-    uint128 constant WAD = 10 ** 18;
-    uint128 constant RAY = 10 ** 27;
-
-    function add(uint128 x, uint128 y) internal pure returns (uint128 z) {
+    function add(uint256 x, uint256 y) internal pure returns (uint256 z) {
         require((z = x + y) >= x, "ds-math-add-overflow");
     }
-    function sub(uint128 x, uint128 y) internal pure returns (uint128 z) {
+    function sub(uint256 x, uint256 y) internal pure returns (uint256 z) {
         require((z = x - y) <= x, "ds-math-sub-underflow");
     }
-    function mul(uint128 x, uint128 y) internal pure returns (uint128 z) {
+    function mul(uint256 x, uint256 y) internal pure returns (uint256 z) {
         require(y == 0 || (z = x * y) / y == x, "ds-math-mul-overflow");
     }
 
-    function min(uint128 x, uint128 y) internal pure returns (uint128 z) {
+    function min(uint256 x, uint256 y) internal pure returns (uint256 z) {
         return x <= y ? x : y;
     }
-    function max(uint128 x, uint128 y) internal pure returns (uint128 z) {
+    function max(uint256 x, uint256 y) internal pure returns (uint256 z) {
         return x >= y ? x : y;
     }
-    function imin(int128 x, int128 y) internal pure returns (int128 z) {
+    function imin(int256 x, int256 y) internal pure returns (int256 z) {
         return x <= y ? x : y;
     }
-    function imax(int128 x, int128 y) internal pure returns (int128 z) {
+    function imax(int256 x, int256 y) internal pure returns (int256 z) {
         return x >= y ? x : y;
     }
 
-    function wmul(uint128 x, uint128 y) internal pure returns (uint128 z) {
-        z = add(mul(x, y), WAD / 2) / WAD;
-    }
-
-    function rmul(uint128 x, uint128 y) internal pure returns (uint128 z) {
-        z = add(mul(x, y), RAY / 2) / RAY;
-    }
-
-    function wdiv(uint128 x, uint128 y) internal pure returns (uint128 z) {
-        z = add(mul(x, WAD), y / 2) / y;
-    }
-
-    function rdiv(uint128 x, uint128 y) internal pure returns (uint128 z) {
-        z = add(mul(x, RAY), y / 2) / y;
-    }
-
-    function rpow(uint128 x, uint128 n) internal pure returns (uint128 z) {
-        z = n % 2 != 0 ? x : RAY;
-
-        for (n /= 2; n != 0; n /= 2) {
-            x = rmul(x, x);
-
-            if (n % 2 != 0) {
-                z = rmul(z, x);
-            }
-        }
-    }
-
-    function div(uint128 a, uint128 b) internal pure returns (uint128) {
+    function div(uint256 a, uint256 b) internal pure returns (uint256) {
         return a / b;
     }
 
-    function mod(uint128 a, uint128 b) internal pure returns (uint128) {
+    function mod(uint256 a, uint256 b) internal pure returns (uint256) {
         return a % b;
     }
 

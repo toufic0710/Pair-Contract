@@ -13,7 +13,6 @@ pragma solidity 0.8.12;
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-
 import "./interfaces/IDebondFactory.sol";
 
 contract DebondFactory is IDebondFactory {
