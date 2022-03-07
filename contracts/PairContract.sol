@@ -18,8 +18,9 @@ import "./interfaces/IPairContract.sol";
 import "./SigmoidBank.sol";
 import "./libraries/SafeMath.sol";
 import "./libraries//PRBMathUD60x18.sol";
+import "https://github.com/DeBond-Protocol/EIP-3475/blob/development/contracts/ERC3475.sol";
 
-contract PairContract is IPairContract {
+contract PairContract is IPairContract, ERC3475 {
 	using SafeMath for uint256;
 	SigmoidBank bank;
 
@@ -53,6 +54,8 @@ contract PairContract is IPairContract {
 
 	constructor(address _bankContract) {
 		bank = SigmoidBank(_bankContract);
+		createClass(0, 0x583031D1113aD414F02576BD6afaBfb302140225, "DBIT");
+		createClass(1, 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4, "USDT");
 	}
 
 
@@ -77,17 +80,16 @@ contract PairContract is IPairContract {
 		address _token,
 		uint256 _amountToken,
 		uint256 _amountDBIT,
+		uint256 _classId,
+		uint256 _nonecDBIT,
+		uint256 _nonceToken,
 		address _to,
 		uint deadline
-	) external virtual inTime(deadline) returns(uint256 amountToken, uint256 amountDBIT, uint256 tokenBond, uint256 dbitBond) {
+	) external virtual inTime(deadline) returns(uint256 amountToken, uint256 amountDBIT) {
 		require(_to != address(0), "Zero address not allowed");
 		address _DBIT = bank.DBITContract();
 
 		(amountToken, amountDBIT) = _addLiquidityForOneToken(_coinIndex, _token, _amountToken, _amountDBIT);
-
-		// get the _token Bond address from Bank Contract
-		// get the DBIT Bond address from Bank Contrat
-		(tokenBond, dbitBond) = (10, 10);
 
 		// update the ratio factor
 		updateRatioFactor(_token, _DBIT, amountToken, amountDBIT);
@@ -95,8 +97,14 @@ contract PairContract is IPairContract {
 		// update the price
 		updatePrice(_token, _DBIT);
 
-		// Transfer bonds TokenBond and dbitBond the `to` address
-		// Call transfer function
+		// issuer DBIT and Token bonds
+		issue(_to, _classId, _nonecDBIT, amountDBIT);
+		issue(_to, _classId, _nonceToken, amountToken);
+
+		return (
+			amountToken,
+			amountDBIT
+		);
 	}
 	
 	function updateRatioFactor(address token0, address token1, uint256 amount0, uint256 amount1) public returns(uint256 ratio01, uint256 ratio10) {
