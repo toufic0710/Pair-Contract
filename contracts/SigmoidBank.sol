@@ -29,6 +29,7 @@ contract SigmoidBank {
 
     address public DBITContract;
     address public DBGTContract;
+    address public DAIContract;
     address public gouvernanceContract;
     address public bankContract;
     address public bondContract;
@@ -40,15 +41,17 @@ contract SigmoidBank {
     bool public contractIsActive;
 
     constructor() {
-        DBITContract = 0x583031D1113aD414F02576BD6afaBfb302140225;
+        DBITContract = 0x1aEBC194Adc787656901F6857008FA2CecAE0d0f;
         DBGTContract = 0xdD870fA1b7C4700F2BD7f44238821C26f7392148;
+
+        DAIContract = 0x963026A3616A7e27235ffa87592CebAaF340Af7a;
     }
 
     function setList() public {
         address USDT = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
         address USDC = 0x9F08560CBF0204c8bB4c45F1E9808549Be01A39A;
         address BUSD = 0x128172788D386E44e37eFF38454Ba54cf350206F;
-        address DAI  = 0x9a25f122Fb39B6cB17fcCd63584f8473C09A683C;
+        address UST  = 0x9a25f122Fb39B6cB17fcCd63584f8473C09A683C;
 
         /**
         * @dev list index: 0 - DBIT, 1 - DBGT
@@ -56,9 +59,10 @@ contract SigmoidBank {
         list[0].tokenAddress.push(USDT);
         list[0].tokenAddress.push(USDC);
         list[0].tokenAddress.push(BUSD);
-        list[0].tokenAddress.push(DAI);
+        list[0].tokenAddress.push(UST);
+        list[0].tokenAddress.push(DAIContract);
 
-        list[0].numberOfTokens = 4;
+        list[0].numberOfTokens = 5;
     }
 
     function tokenListed(address _address, uint256 _coinIndex) public view returns(bool listed) {
