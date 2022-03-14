@@ -41,10 +41,10 @@ contract SigmoidBank {
     bool public contractIsActive;
 
     constructor() {
-        DBITContract = 0x1aEBC194Adc787656901F6857008FA2CecAE0d0f;
+        DBITContract = 0x8f54C385eDda815C315D29bd04B150a1880fD75E;
         DBGTContract = 0xdD870fA1b7C4700F2BD7f44238821C26f7392148;
 
-        DAIContract = 0x963026A3616A7e27235ffa87592CebAaF340Af7a;
+        DAIContract = 0x10dFC8c05af072C79E6e4be888BB210d2aD575Ed;
     }
 
     function setList() public {
