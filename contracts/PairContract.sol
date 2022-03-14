@@ -13,17 +13,16 @@ pragma solidity 0.8.12;
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-
-import "./interfaces/IPairContract.sol";
 import "./SigmoidBank.sol";
 import "./libraries/SafeMath.sol";
 import "./libraries//PRBMathUD60x18.sol";
+import "./ERC3475.sol";
+import "./ERC20/IERC20.sol";
 
-contract PairContract is IPairContract {
+
+contract PairContract is ERC3475 {
 	using SafeMath for uint256;
 	SigmoidBank bank;
-
-	mapping(address => mapping(address => uint256)) public k; // reserv0 * reserve1
 	// ratio factors r_{tA (tB)} of a pair
 	mapping(address => mapping(address => uint256[2])) internal ratio;
 	// price P(tA, tB) in a pair
@@ -31,30 +30,16 @@ contract PairContract is IPairContract {
 	// token reserve L(tA) for the Pool
 	mapping(address => uint256[2]) internal reserve;
 
-
-	//====== TO BE REMOVED
-	
-	// This must be Bonds from EIP-3475
-	struct Bond {
-		uint256 tokenBond;
-		uint256 dbitBond;
-	}
-
-	mapping(address => mapping(address => Bond)) public bonds;
-
-	address tokenBondAddress = 0x62C549A323e1864f49ac3A5Bb1448De20b0f5538;
-	address DBITBondAddress  = 0xC0D335A6296310895E87fcAa31466283f65f43Eb;
-	//====================
-
-	modifier inTime(uint deadline) {
-        require(deadline >= block.timestamp, 'UniswapV2Router: EXPIRED');
+	modifier inTime(uint256 deadline) {
+        require(deadline >= block.timestamp, 'Debond: EXPIRED');
         _;
     }
 
 	constructor(address _bankContract) {
 		bank = SigmoidBank(_bankContract);
+		createClass(0, 0x7EF2e0048f5bAeDe046f6BF797943daF4ED8CB47, "DBIT");
+		createClass(1, 0x358AA13c52544ECCEF6B0ADD0f801012ADAD5eE3, "DAI");
 	}
-
 
 	/**
     * @dev add liquidity of one token to the pool, the amount of the second token (DBIT or DBGT) is minted
@@ -66,7 +51,8 @@ contract PairContract is IPairContract {
         uint256 _amountToken,
         uint256 _amountDBIT
     ) internal view returns(uint256 amountToken, uint256 amountDBIT) {
-        require(bank.tokenListed(_token, _coinIndex), "Pair doesn't exist");
+		bool listed = bank.tokenListed(_token, _coinIndex);
+        require(listed, "Pair doesn't exist");
 		
         uint256 dbitAmount = amountOfDebondToMint(_amountDBIT);
         (amountToken, amountDBIT) = (_amountToken, dbitAmount);
@@ -77,17 +63,18 @@ contract PairContract is IPairContract {
 		address _token,
 		uint256 _amountToken,
 		uint256 _amountDBIT,
+		uint256 _classIdDBIT,
+		uint256 _classIdToken,
+		uint256 _nonecDBIT,
+		uint256 _nonceToken,
 		address _to,
 		uint deadline
-	) external virtual inTime(deadline) returns(uint256 amountToken, uint256 amountDBIT, uint256 tokenBond, uint256 dbitBond) {
+	) external inTime(deadline) returns(uint256 amountToken, uint256 amountDBIT) {
 		require(_to != address(0), "Zero address not allowed");
 		address _DBIT = bank.DBITContract();
+		//address _dai = bank.DAIContract();
 
 		(amountToken, amountDBIT) = _addLiquidityForOneToken(_coinIndex, _token, _amountToken, _amountDBIT);
-
-		// get the _token Bond address from Bank Contract
-		// get the DBIT Bond address from Bank Contrat
-		(tokenBond, dbitBond) = (10, 10);
 
 		// update the ratio factor
 		updateRatioFactor(_token, _DBIT, amountToken, amountDBIT);
@@ -95,8 +82,24 @@ contract PairContract is IPairContract {
 		// update the price
 		updatePrice(_token, _DBIT);
 
-		// Transfer bonds TokenBond and dbitBond the `to` address
-		// Call transfer function
+		//require(IERC20(_DBIT).balanceOf(msg.sender) >= amountDBIT / 1 ether, "Debond: not enough DBIT");
+		//require(IERC20(_token).balanceOf(msg.sender) >= amountToken / 1 ether, "Debond: not enough DAI");
+
+		//IERC20(_DBIT).approve(address(this), amountDBIT);
+		//IERC20(_dai).approve(address(this), amountToken);
+
+		// transfer token to the Pair Contract
+		IERC20(_DBIT).transferFrom(msg.sender, address(this), amountDBIT);
+        IERC20(_token).transferFrom(msg.sender, address(this), amountToken / 1);
+
+		// issuer DBIT and Token bonds
+		issue(_to, _classIdDBIT, _nonecDBIT, amountDBIT);
+		issue(_to, _classIdToken, _nonceToken, amountToken);
+
+		return (
+			amountToken,
+			amountDBIT
+		);
 	}
 	
 	function updateRatioFactor(address token0, address token1, uint256 amount0, uint256 amount1) public returns(uint256 ratio01, uint256 ratio10) {
@@ -143,16 +146,11 @@ contract PairContract is IPairContract {
 		uint256 dbitTotalSupply = 1000000;
 		//===
 
-		require(_dbitIn > 0, "Cannot mint 0 DBIT");
+		require(_dbitIn > 0, "Amount of DBIT");
 		require(dbitTotalSupply.add(_dbitIn) <= dbitMaxSupply, "Not enough DBIT remins to buy");
 
 		// amount of of DBIT to mint
 		amountDBIT = _dbitIn * dbitUSDPrice();
-	}
-
-	function mint(address to) external returns(uint256 boundToken1, uint256 boundToken2) {
-		// ToDo: Toufic must provide the mint function
-
 	}
 
 	function getReserves(address token) external view returns(uint256 previousReserve, uint256 currentReserve) {
@@ -168,7 +166,7 @@ contract PairContract is IPairContract {
 	}
 
 	function dbitUSDPrice() public pure returns(uint256 DBITPrice) {
-		//== THIS TWO VARIABLE MUS BE IMPORTED FROM SIGMOID CONTRACT
+		//== THIS TWO VARIABLE MUST BE IMPORTED FROM SIGMOID CONTRACT
 		uint256 dbitTotalSupply = 1000000;
 		//===
 
