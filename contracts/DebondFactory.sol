@@ -16,6 +16,8 @@ pragma solidity 0.8.12;
 import "./interfaces/IDebondFactory.sol";
 
 contract DebondFactory is IDebondFactory {
+
+    // mapping(addressTokenA => mapping(addressTokenB => addressOfThePair))
     mapping(address => mapping(address => address)) public pairs;
 
     function createPair(address _token0, address _token1) external view returns(address pair) {
