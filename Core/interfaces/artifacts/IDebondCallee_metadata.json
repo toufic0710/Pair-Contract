@@ -1,0 +1,73 @@
+{
+	"compiler": {
+		"version": "0.8.12+commit.f00d7308"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount0",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "uniswapV2Call",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Core/interfaces/IDebondCalle.sol": "IDebondCallee"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Core/interfaces/IDebondCalle.sol": {
+			"keccak256": "0x3fba93ac7222849dccc3113a2dd0ec85d71c8d6d9f2c931bc06362d52db800b2",
+			"urls": [
+				"bzz-raw://fc24b03ef00faefb5a97ce3c8b5dcc347cd5fc6dde1faefe0dfacbbe89b24ad5",
+				"dweb:/ipfs/QmXGFxftnt22nGhTxPkU4z2oPefaTMCQFfBqDmkqBRtuTQ"
+			]
+		}
+	},
+	"version": 1
+}

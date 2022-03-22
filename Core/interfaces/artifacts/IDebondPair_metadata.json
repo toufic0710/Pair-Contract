@@ -1,0 +1,44 @@
+{
+	"compiler": {
+		"version": "0.8.12+commit.f00d7308"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Core/interfaces/IDebondPair.sol": "IDebondPair"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Core/interfaces/IDebondPair.sol": {
+			"keccak256": "0x40b045c923d65aac57a1f6e040467c4ebaf9f6005d9e13df8d3099dff10f33e8",
+			"urls": [
+				"bzz-raw://5f5bb1a7fbc59aeacdaaf95afcb698bc6d9fdad5b7f96a1b488e885af61c2fc0",
+				"dweb:/ipfs/QmeXnT2DiWNCPjg7iBeXK2K9rDfCDA4TMLFnweajaUTAMw"
+			]
+		}
+	},
+	"version": 1
+}

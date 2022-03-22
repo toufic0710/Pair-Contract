@@ -1,0 +1,79 @@
+{
+	"compiler": {
+		"version": "0.8.12+commit.f00d7308"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"author": "Paul Razvan Berg",
+			"kind": "dev",
+			"methods": {},
+			"stateVariables": {
+				"HALF_SCALE": {
+					"details": "Half the SCALE number."
+				},
+				"LOG2_E": {
+					"details": "log2(e) as a signed 59.18-decimal fixed-point number."
+				},
+				"MAX_SD59x18": {
+					"details": "The maximum value a signed 59.18-decimal fixed-point number can have."
+				},
+				"MAX_WHOLE_SD59x18": {
+					"details": "The maximum whole value a signed 59.18-decimal fixed-point number can have."
+				},
+				"MIN_SD59x18": {
+					"details": "The minimum value a signed 59.18-decimal fixed-point number can have."
+				},
+				"MIN_WHOLE_SD59x18": {
+					"details": "The minimum whole value a signed 59.18-decimal fixed-point number can have."
+				},
+				"SCALE": {
+					"details": "How many trailing decimals can be represented."
+				}
+			},
+			"title": "PRBMathSD59x18",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "Smart contract library for advanced fixed-point math that works with int256 numbers considered to have 18 trailing decimals. We call this number representation signed 59.18-decimal fixed-point, since the numbers can have a sign and there can be up to 59 digits in the integer part and up to 18 decimals in the fractional part. The numbers are bound by the minimum and the maximum values permitted by the Solidity type int256.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Periphery/libraries/PRBMathSD59x18.sol": "PRBMathSD59x18"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Periphery/libraries/PRBMath.sol": {
+			"keccak256": "0x75506677234ae3b1b4129c0a50604f64df15f33178366ff3682821f5de4c27e5",
+			"license": "Unlicense",
+			"urls": [
+				"bzz-raw://2a5fc67dbbe296b93982464cceee702a4b22961ca3124d889a05578854ac95e0",
+				"dweb:/ipfs/QmXX5Hevktr7YU3NYxLzfUvTQfqHtmXgc981E4sjML58Dm"
+			]
+		},
+		"Periphery/libraries/PRBMathSD59x18.sol": {
+			"keccak256": "0xb381689fca51885ccf0105c1bf01a0f10c3aaba9f7295a824116f0e6938aae61",
+			"license": "Unlicense",
+			"urls": [
+				"bzz-raw://27833a249f5da26d507d3655ef5bf03910899f9c5f7a33958a49997284e546ca",
+				"dweb:/ipfs/QmY8eMYnkqiM97JeTmaS1qVcsX3aFaSMZJ2oJncZ1TLuxB"
+			]
+		}
+	},
+	"version": 1
+}

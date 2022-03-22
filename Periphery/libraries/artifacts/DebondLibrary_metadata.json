@@ -1,0 +1,67 @@
+{
+	"compiler": {
+		"version": "0.8.12+commit.f00d7308"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Periphery/libraries/DebondLibrary.sol": "DebondLibrary"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Core/interfaces/IDebondPair.sol": {
+			"keccak256": "0x40b045c923d65aac57a1f6e040467c4ebaf9f6005d9e13df8d3099dff10f33e8",
+			"urls": [
+				"bzz-raw://5f5bb1a7fbc59aeacdaaf95afcb698bc6d9fdad5b7f96a1b488e885af61c2fc0",
+				"dweb:/ipfs/QmeXnT2DiWNCPjg7iBeXK2K9rDfCDA4TMLFnweajaUTAMw"
+			]
+		},
+		"Periphery/libraries/DebondLibrary.sol": {
+			"keccak256": "0x5357a1bce214cafa9932fa0d205ccc804939caca2650b9e293fd5e1d98aa9112",
+			"urls": [
+				"bzz-raw://dfad653676cca9c27114f094e4a96bd305e545d11de8885a117f7560d8da3cd2",
+				"dweb:/ipfs/QmREbZScS9Ys5MHsrF6nnMfatFYYEzkK2kJUfWTbXHz9J5"
+			]
+		},
+		"Periphery/libraries/PRBMath.sol": {
+			"keccak256": "0x75506677234ae3b1b4129c0a50604f64df15f33178366ff3682821f5de4c27e5",
+			"license": "Unlicense",
+			"urls": [
+				"bzz-raw://2a5fc67dbbe296b93982464cceee702a4b22961ca3124d889a05578854ac95e0",
+				"dweb:/ipfs/QmXX5Hevktr7YU3NYxLzfUvTQfqHtmXgc981E4sjML58Dm"
+			]
+		},
+		"Periphery/libraries/PRBMathSD59x18.sol": {
+			"keccak256": "0xb381689fca51885ccf0105c1bf01a0f10c3aaba9f7295a824116f0e6938aae61",
+			"license": "Unlicense",
+			"urls": [
+				"bzz-raw://27833a249f5da26d507d3655ef5bf03910899f9c5f7a33958a49997284e546ca",
+				"dweb:/ipfs/QmY8eMYnkqiM97JeTmaS1qVcsX3aFaSMZJ2oJncZ1TLuxB"
+			]
+		}
+	},
+	"version": 1
+}

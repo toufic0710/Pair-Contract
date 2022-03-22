@@ -1,0 +1,104 @@
+{
+	"compiler": {
+		"version": "0.8.12+commit.f00d7308"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "tokenAllowed",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenA",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenB",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "allowed",
+						"type": "bool"
+					}
+				],
+				"name": "updateTokenAllowed",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Periphery/Data.sol": "Data"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Periphery/Data.sol": {
+			"keccak256": "0x9aad51eb7e18059b65490104834e9bc37399081858096c75d6bcdfdcb1ce831c",
+			"urls": [
+				"bzz-raw://083a1bd3a99ba6934cba1832906504cf06b5c99e396e5f5ca3e9b72f22997da5",
+				"dweb:/ipfs/QmdT47MdmR5cv6sj11qusB3JF3wabHfH93mxfTxaEhYcFK"
+			]
+		},
+		"Periphery/interfaces/Idata.sol": {
+			"keccak256": "0xc8afab46724b2b84698543119e970139e4531ac819b1f06c531fe0f088faabcd",
+			"urls": [
+				"bzz-raw://1e3cc9207dd3fbb9db32c80afb1aa7e73974541d86a8aef45fa9c828ed855cf1",
+				"dweb:/ipfs/QmXuMp45busAL2MbaStwaHwCBEYM9et3cBszjsynfbxFzc"
+			]
+		}
+	},
+	"version": 1
+}

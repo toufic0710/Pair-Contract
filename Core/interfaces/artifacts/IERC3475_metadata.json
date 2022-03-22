@@ -1,0 +1,699 @@
+{
+	"compiler": {
+		"version": "0.8.12+commit.f00d7308"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256[]",
+						"name": "classIds",
+						"type": "uint256[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256[]",
+						"name": "nonceIds",
+						"type": "uint256[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "_approved",
+						"type": "bool"
+					}
+				],
+				"name": "ApprovalFor",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Burned",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Issued",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Redeemed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256[]",
+						"name": "classIds",
+						"type": "uint256[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256[]",
+						"name": "nonceIds",
+						"type": "uint256[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256[]",
+						"name": "_amounts",
+						"type": "uint256[]"
+					}
+				],
+				"name": "TransferBatch",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Transferred",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					}
+				],
+				"name": "activeSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "classIds",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "nonceIds",
+						"type": "uint256[]"
+					}
+				],
+				"name": "batchIsApprovedFor",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "classIds",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "nonceIds",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_amount",
+						"type": "uint256[]"
+					}
+				],
+				"name": "batchTransferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					}
+				],
+				"name": "burnedSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					}
+				],
+				"name": "infos",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "startingDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maturityDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "info3",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "info4",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "info5",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "info6",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					}
+				],
+				"name": "isApprovedFor",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					}
+				],
+				"name": "isRedeemable",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					}
+				],
+				"name": "redeemedSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "classIds",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "nonceIds",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "bool",
+						"name": "_approved",
+						"type": "bool"
+					}
+				],
+				"name": "setApprovalFor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					}
+				],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					}
+				],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "classId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonceId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"ApprovalFor(address,address,uint256[],uint256[],bool)": {
+					"details": "MUST emit when approval for a second party/operator address to manage all tokens for an owner address is enabled or disabled (absence of an event assumes disabled)."
+				},
+				"TransferBatch(address,address,address,uint256[],uint256[],uint256[])": {
+					"details": "Either `TransferSingle` or `TransferBatch` MUST emit when tokens are transferred, including zero value transfers as well as minting or burning (see \"Safe Transfer Rules\" section of the standard)."
+				},
+				"Transferred(address,address,address,uint256,uint256,uint256)": {
+					"details": "Either `TransferSingle` or `TransferBatch` MUST emit when tokens are transferred, including zero value transfers as well as minting or burning (see \"Safe Transfer Rules\" section of the standard). The `_operator` argument MUST be the address of an account/contract that is approved to make the transfer (SHOULD be msg.sender). The `_from` argument MUST be the address of the holder whose balance is decreased. The `_to` argument MUST be the address of the recipient whose balance is increased. The `_classId` argument MUST be the classId of the token being transferred. The `_nonceId` argument MUST be the nonce of the token being transferred. The `_amount` argument MUST be the number of tokens the holder balance is decreased by and match what the recipient balance is increased by. When minting/creating tokens, the `_from` argument MUST be set to `0x0` (i.e. zero address). When burning/destroying tokens, the `_to` argument MUST be set to `0x0` (i.e. zero address)."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"activeSupply(uint256,uint256)": {
+					"details": "Returns the active supply of the bond in question"
+				},
+				"balanceOf(address,uint256,uint256)": {
+					"details": "Returns the balance of the giving bond classId and bond nonce"
+				},
+				"batchTransferFrom(address,address,uint256[],uint256[],uint256[])": {
+					"details": "Transfer of any number of bond types from an address to another."
+				},
+				"burnedSupply(uint256,uint256)": {
+					"details": "Returns the burned supply of the bond in question"
+				},
+				"infos(uint256,uint256)": {
+					"details": "Returns the bond symbol and a list of uint256 parameters of a bond nonce. — e.g. [\"DEBIT-BUSD\",\"1615584000\",(3rd uint256)...].** Every bond contract can have their own list. But the first uint256 in the list MUST be the UTC time code of the issuing time."
+				},
+				"redeemedSupply(uint256,uint256)": {
+					"details": "Returns the redeemed supply of the bond in question"
+				},
+				"setApprovalFor(address,uint256[],uint256[],bool)": {
+					"details": "MUST emit the ApprovalFor event on success."
+				},
+				"totalSupply(uint256,uint256)": {
+					"details": "Returns the total supply of the bond in question"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"setApprovalFor(address,uint256[],uint256[],bool)": {
+					"notice": "Enable or disable approval for a third party (\"operator\") to manage a given bond."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Core/interfaces/IERC3475.sol": "IERC3475"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Core/interfaces/IERC3475.sol": {
+			"keccak256": "0xc72243730f243cc2dfe7f2814b299b885a3ea1be3acc4973905571e5ba329e49",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://156f315e3db14fd0da10de7ff0cc2817cca70a85dcdd900a24cb3bb8b3438842",
+				"dweb:/ipfs/QmRjNBWGjQfXLPEnDRApgxTXmGq5tFunparGCJguDcLGfD"
+			]
+		}
+	},
+	"version": 1
+}
